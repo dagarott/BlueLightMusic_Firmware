@@ -124,3 +124,45 @@ uint8_t Cyclon(void)
 		index_led1=2;
 	}
 }
+
+
+uint8_t Flash(void)
+{
+	
+	static uint16_t index_led=0,num_flashes=0;
+	const uint8_t first_red=10;
+	const uint8_t first_blue=25;
+	const uint8_t first_green=127;
+	const uint8_t second_red=0;
+	const uint8_t second_blue=255;
+	const uint8_t second_green=255;
+	static uint8_t tmp_red=first_red;
+	static uint8_t tmp_blue=first_blue;
+	static uint8_t tmp_green=first_green;
+
+
+	SetAll(0,0,0); 
+
+	if(index_led<3)
+	{
+		SetPixel(index_led, tmp_red,tmp_blue, tmp_green );
+		
+		i2s_ws2812b_drive_xfer(led_array, NUM_LEDS, I2S_STDO_PIN);
+		
+		tmp_red=first_red+second_red-tmp_red;
+		tmp_blue=first_blue+second_blue-tmp_blue;
+		tmp_green=first_green+second_green-tmp_green;
+		
+		if(num_flashes>3)
+		{		
+			index_led++;
+			num_flashes=0;
+		}
+		else
+			num_flashes++;
+			
+		return(10);
+	}
+	else index_led=0;
+	
+}

@@ -185,12 +185,10 @@ static void nus_data_handler(ble_nus_t * p_nus, uint8_t * p_data, uint16_t lengt
 			ws2812bPattern=FADE;
     break;
     case '2': 
-            ws2812bPattern=CYCLON;
+      ws2812bPattern=CYCLON;
     break;
-    case '3': {
-     
-
-    }
+    case '3': 
+			ws2812bPattern=FLASH;
     break;
 
     case '4': {
@@ -687,6 +685,11 @@ static void systick_timeout_handler(void * p_context)
         case CYCLON:
         {
             DelayWS2812b=Cyclon();
+            break;
+        }
+				case FLASH:
+        {
+            DelayWS2812b=Flash();
             break;
         }
 
