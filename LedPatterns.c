@@ -10,15 +10,37 @@
 #include	"LedPatterns.h"
 #include	"ws2812b_drive.h"
 #include	"project.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 #define RANDOM_BUFF_SIZE 16                                                           /**< Random numbers buffer size. */
 
 
 rgb_led_t led_array[NUM_LEDS];
-//uint16_t i=0;
-//uint16_t j=0;
-//uint16_t k=255;
 
+
+uint8_t random(void)
+{
+	uint32_t err_code;
+	//uint8_t * random_number;
+	uint8_t random_number;
+	uint8_t num_rand_bytes_available;
+	
+	//random_number=random_vector;
+	
+	err_code = sd_rand_application_bytes_available_get(&num_rand_bytes_available);
+	APP_ERROR_CHECK(err_code);
+	//if there is a randon number available
+	if(num_rand_bytes_available > 0)
+	{
+          err_code = sd_rand_application_vector_get(&random_number, 1);
+          APP_ERROR_CHECK(err_code);
+					return(random_number);
+	
+	}
+}
+	 
+	 
 void SetAll(uint8_t red, uint8_t green, uint8_t blue)
 {
 	    led_array[0].red=red;
@@ -139,8 +161,8 @@ uint8_t Flash(void)
 	static uint8_t tmp_red=first_red;
 	static uint8_t tmp_blue=first_blue;
 	static uint8_t tmp_green=first_green;
-
-
+	
+	
 	SetAll(0,0,0); 
 
 	if(index_led<3)
@@ -163,6 +185,53 @@ uint8_t Flash(void)
 			
 		return(10);
 	}
-	else index_led=0;
+	else 
+		index_led=0;
+		//index_led=random()%3;
 	
 }
+
+uint8_t Randome(void)
+{
+	
+	static uint16_t index_led=0;
+	const uint8_t first_red=10;
+	const uint8_t first_blue=25;
+	const uint8_t first_green=127;
+//	const uint8_t second_red=0;
+//	const uint8_t second_blue=255;
+//	const uint8_t second_green=255;
+	static uint8_t tmp_red=first_red;
+	static uint8_t tmp_blue=first_blue;
+	static uint8_t tmp_green=first_green;
+	
+//	static uint16_t tmp=0;
+
+
+	SetAll(0,0,0); 
+
+	if(index_led<3)
+	{
+		SetPixel(index_led, tmp_red,tmp_blue, tmp_green );
+		
+		i2s_ws2812b_drive_xfer(led_array, NUM_LEDS, I2S_STDO_PIN);
+		
+	//	tmp_red=first_red+second_red-tmp_red;
+	//	tmp_blue=first_blue+second_blue-tmp_blue;
+	//	tmp_green=first_green+second_green-tmp_green;
+		
+	//	if(num_flashes>3)
+	//	{		
+	//		index_led++;
+	//		num_flashes=0;
+	//	}
+	//	else
+	//		num_flashes++;
+			
+		return(5);
+	}
+	else 
+		index_led=random()%3;
+	
+}
+

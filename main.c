@@ -190,10 +190,8 @@ static void nus_data_handler(ble_nus_t * p_nus, uint8_t * p_data, uint16_t lengt
     case '3': 
 			ws2812bPattern=FLASH;
     break;
-
-    case '4': {
-        
-    }
+    case '4': 
+     ws2812bPattern=RANDOME;   
     break;
 
     }
@@ -690,6 +688,11 @@ static void systick_timeout_handler(void * p_context)
 				case FLASH:
         {
             DelayWS2812b=Flash();
+            break;
+        }
+				case RANDOME:
+        {
+            DelayWS2812b=Randome();
             break;
         }
 

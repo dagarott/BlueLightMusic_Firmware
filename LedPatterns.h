@@ -15,10 +15,12 @@
 #define FADE 0
 #define CYCLON 1
 #define FLASH 2
+#define RANDOME 3
 
 
 uint8_t	FadeInOut(void);
 uint8_t Cyclon(void);
 uint8_t Flash(void);
+uint8_t Randome(void);
 
 #endif // LEDSPATTERNS_H

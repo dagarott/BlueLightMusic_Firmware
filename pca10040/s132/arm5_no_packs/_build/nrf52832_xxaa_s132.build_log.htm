@@ -27,20 +27,20 @@ Project File Date:  10/15/2017
 <h2>Output:</h2>
 *** Using Compiler 'V5.05 update 2 (build 169)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'nrf52832_xxaa_s132'
-compiling LedPatterns.c...
-..\..\..\LedPatterns.h(24): warning:  #1-D: last line of file ends without a newline
+compiling main.c...
+..\..\..\LedPatterns.h (26): warning:  #1-D: last line of file ends without a newline
   #endif // LEDSPATTERNS_H
-..\..\..\LedPatterns.c(94): warning:  #940-D: missing return statement at end of non-void function "FadeInOut"
-  }
-..\..\..\LedPatterns.c(126): warning:  #940-D: missing return statement at end of non-void function "Cyclon"
-  }
-..\..\..\LedPatterns.c(168): warning:  #1-D: last line of file ends without a newline
-  }
-..\..\..\LedPatterns.c(168): warning:  #940-D: missing return statement at end of non-void function "Flash"
-  }
-..\..\..\LedPatterns.c: 5 warnings, 0 errors
+..\..\..\main.c(742): warning:  #550-D: variable "speaker_init" was set but never used
+      drv_speaker_init_t speaker_init;
+..\..\..\main.c(744): warning:  #177-D: variable "note" was declared but never referenced
+      int note=1;
+..\..\..\main.c(542): warning:  #177-D: function "power_manage" was declared but never referenced
+  static void power_manage(void)
+..\..\..\main.c(595): warning:  #177-D: function "pwm_simple" was declared but never referenced
+  static void pwm_simple(uint16_t freq)
+..\..\..\main.c: 5 warnings, 0 errors
 linking...
-Program Size: Code=24360 RO-data=21980 RW-data=272 ZI-data=18912  
+Program Size: Code=24560 RO-data=21980 RW-data=276 ZI-data=18916  
 FromELF: creating hex file...
 ".\_build\nrf52832_xxaa_s132.axf" - 0 Error(s), 5 Warning(s).
 
