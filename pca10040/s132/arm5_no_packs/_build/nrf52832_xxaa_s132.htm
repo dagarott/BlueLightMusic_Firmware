@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\_build\nrf52832_xxaa_s132.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\_build\nrf52832_xxaa_s132.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050169: Last Updated: Thu Oct 19 19:22:27 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050169: Last Updated: Sat Oct 21 18:03:51 2017
 <BR><P>
 <H3>Maximum Stack Usage =        432 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -123,10 +123,10 @@ Global Symbols
 <P><STRONG><a name="[42]"></a>__asm___11_app_timer_c_cd27f9c3__nrf_delay_us</STRONG> (Thumb, 118 bytes, Stack size 0 bytes, app_timer.o(.emb_text))
 <BR><BR>[Calls]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__asm___11_app_timer_c_cd27f9c3__nrf_delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_start
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compare_reg_update
+<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compare_reg_update
 <LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__asm___11_app_timer_c_cd27f9c3__nrf_delay_us
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_stop
+<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_start
 </UL>
 
 <P><STRONG><a name="[43]"></a>__asm___19_i2s_ws2812b_drive_c_58eccd55__nrf_delay_us</STRONG> (Thumb, 118 bytes, Stack size 0 bytes, i2s_ws2812b_drive.o(.emb_text))
@@ -320,12 +320,12 @@ Global Symbols
 <P><STRONG><a name="[8f]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_char_add
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rx_char_add
-<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_i2s_start
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;softdevice_enable_get_default_config
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_advertising_start
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_advertising_init
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;conn_params_init
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;advertising_init
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_i2s_start
 </UL>
 
 <P><STRONG><a name="[134]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
@@ -467,61 +467,68 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_timeout_handler
 </UL>
 
+<P><STRONG><a name="[5a]"></a>FlashFadeInOut</STRONG> (Thumb, 980 bytes, Stack size 32 bytes, ledpatterns.o(i.FlashFadeInOut))
+<BR><BR>[Stack]<UL><LI>Max Depth = 188<LI>Call Chain = FlashFadeInOut &rArr; i2s_ws2812b_drive_xfer &rArr; nrf_drv_i2s_init &rArr; configure_pins &rArr; nrf_gpio_cfg_input &rArr; nrf_gpio_cfg
+</UL>
+<BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2s_ws2812b_drive_xfer
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetPixel
+</UL>
+<BR>[Called By]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_timeout_handler
+</UL>
+
 <P><STRONG><a name="[10]"></a>GPIOTE_IRQHandler</STRONG> (Thumb, 420 bytes, Stack size 64 bytes, nrf_drv_gpiote.o(i.GPIOTE_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = GPIOTE_IRQHandler &rArr; nrf_gpiote_event_clear
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpiote_event_is_set
-<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpiote_event_clear
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpio_cfg_sense_set
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;channel_port_get
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;channel_handler_get
+<BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpiote_event_is_set
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpiote_event_clear
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpio_cfg_sense_set
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;channel_port_get
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;channel_handler_get
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> arm_startup_nrf52.o(RESET)
 </UL>
 <P><STRONG><a name="[2d]"></a>I2S_IRQHandler</STRONG> (Thumb, 340 bytes, Stack size 24 bytes, nrf_drv_i2s.o(i.I2S_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = I2S_IRQHandler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_i2s_tx_buffer_set
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_i2s_rx_buffer_set
-<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_i2s_event_clear
-<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_i2s_event_check
+<BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_i2s_tx_buffer_set
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_i2s_rx_buffer_set
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_i2s_event_clear
+<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_i2s_event_check
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> arm_startup_nrf52.o(RESET)
 </UL>
+<P><STRONG><a name="[64]"></a>OffLeds</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, ledpatterns.o(i.OffLeds))
+<BR><BR>[Stack]<UL><LI>Max Depth = 164<LI>Call Chain = OffLeds &rArr; i2s_ws2812b_drive_xfer &rArr; nrf_drv_i2s_init &rArr; configure_pins &rArr; nrf_gpio_cfg_input &rArr; nrf_gpio_cfg
+</UL>
+<BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2s_ws2812b_drive_xfer
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetAll
+</UL>
+<BR>[Called By]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_timeout_handler
+</UL>
+
 <P><STRONG><a name="[26]"></a>PWM0_IRQHandler</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, nrf_drv_pwm.o(i.PWM0_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = PWM0_IRQHandler &rArr; irq_handler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;irq_handler
+<BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;irq_handler
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> arm_startup_nrf52.o(RESET)
 </UL>
 <P><STRONG><a name="[29]"></a>PWM1_IRQHandler</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, nrf_drv_pwm.o(i.PWM1_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = PWM1_IRQHandler &rArr; irq_handler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;irq_handler
+<BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;irq_handler
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> arm_startup_nrf52.o(RESET)
 </UL>
 <P><STRONG><a name="[1b]"></a>RTC1_IRQHandler</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, app_timer.o(i.RTC1_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = RTC1_IRQHandler &rArr; timer_timeouts_check &rArr; timeout_handler_exec &rArr; app_error_handler_bare
 </UL>
-<BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_timeouts_check
+<BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_timeouts_check
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> arm_startup_nrf52.o(RESET)
 </UL>
-<P><STRONG><a name="[65]"></a>Randome</STRONG> (Thumb, 84 bytes, Stack size 16 bytes, ledpatterns.o(i.Randome))
-<BR><BR>[Stack]<UL><LI>Max Depth = 172<LI>Call Chain = Randome &rArr; i2s_ws2812b_drive_xfer &rArr; nrf_drv_i2s_init &rArr; configure_pins &rArr; nrf_gpio_cfg_input &rArr; nrf_gpio_cfg
-</UL>
-<BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2s_ws2812b_drive_xfer
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;random
-<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetPixel
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetAll
-</UL>
-<BR>[Called By]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_timeout_handler
-</UL>
-
 <P><STRONG><a name="[1e]"></a>SWI0_EGU0_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, app_timer.o(i.SWI0_EGU0_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = SWI0_EGU0_IRQHandler &rArr; timer_list_handler &rArr; list_insertions_handler &rArr; timer_list_insert
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = SWI0_EGU0_IRQHandler &rArr; timer_list_handler &rArr; compare_reg_update &rArr; timer_timeouts_check_sched
 </UL>
 <BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_list_handler
 </UL>
@@ -536,7 +543,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> arm_startup_nrf52.o(RESET)
 </UL>
 <P><STRONG><a name="[55]"></a>SetAll</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, ledpatterns.o(i.SetAll))
-<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Randome
+<BR><BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OffLeds
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Flash
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FadeInOut
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclon
@@ -545,7 +552,7 @@ Global Symbols
 <P><STRONG><a name="[56]"></a>SetPixel</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, ledpatterns.o(i.SetPixel))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SetPixel
 </UL>
-<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Randome
+<BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FlashFadeInOut
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Flash
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclon
 </UL>
@@ -638,7 +645,6 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_error_fault_handler
 </UL>
 <BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2s_ws2812b_drive_xfer
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;random
 <LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_event_handle
 <LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
@@ -695,12 +701,12 @@ Global Symbols
 <P><STRONG><a name="[97]"></a>app_timer_init</STRONG> (Thumb, 154 bytes, Stack size 24 bytes, app_timer.o(i.app_timer_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = app_timer_init &rArr; rtc1_init &rArr; NVIC_SetPriority
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_init
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_counter_get
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_SetPriority
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_SetPriority
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_EnableIRQ
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_ClearPendingIRQ
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_stop
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_init
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_counter_get
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_init
@@ -918,17 +924,18 @@ Global Symbols
 <P><STRONG><a name="[57]"></a>i2s_ws2812b_drive_xfer</STRONG> (Thumb, 266 bytes, Stack size 56 bytes, i2s_ws2812b_drive.o(i.i2s_ws2812b_drive_xfer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 156<LI>Call Chain = i2s_ws2812b_drive_xfer &rArr; nrf_drv_i2s_init &rArr; configure_pins &rArr; nrf_gpio_cfg_input &rArr; nrf_gpio_cfg
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_i2s_uninit
+<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_error_handler_bare
+<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_i2s_uninit
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_i2s_stop
 <LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_i2s_start
 <LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_i2s_init
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_error_handler_bare
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__asm___19_i2s_ws2812b_drive_c_58eccd55__nrf_delay_us
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;malloc
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;free
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Randome
+<BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OffLeds
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FlashFadeInOut
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Flash
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FadeInOut
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclon
@@ -986,10 +993,10 @@ Global Symbols
 <P><STRONG><a name="[ee]"></a>nrf_drv_i2s_start</STRONG> (Thumb, 316 bytes, Stack size 56 bytes, nrf_drv_i2s.o(i.nrf_drv_i2s_start))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = nrf_drv_i2s_start
 </UL>
-<BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_i2s_tx_buffer_set
+<BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_i2s_tx_buffer_set
 <LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_i2s_task_trigger
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_i2s_rx_buffer_set
-<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_i2s_event_clear
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_i2s_rx_buffer_set
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_i2s_event_clear
 <LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_is_in_RAM
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
@@ -1001,8 +1008,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_i2s_task_trigger
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_i2s_uninit
-<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2s_ws2812b_drive_xfer
+<BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2s_ws2812b_drive_xfer
+<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_i2s_uninit
 </UL>
 
 <P><STRONG><a name="[f1]"></a>nrf_drv_i2s_uninit</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, nrf_drv_i2s.o(i.nrf_drv_i2s_uninit))
@@ -1067,14 +1074,6 @@ Global Symbols
 
 <P><STRONG><a name="[e8]"></a>pstorage_access_status_get</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, pstorage.o(i.pstorage_access_status_get))
 <BR><BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_access_in_progress
-</UL>
-
-<P><STRONG><a name="[66]"></a>random</STRONG> (Thumb, 70 bytes, Stack size 24 bytes, ledpatterns.o(i.random))
-<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = random &rArr; app_error_handler_bare
-</UL>
-<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_error_handler_bare
-</UL>
-<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Randome
 </UL>
 
 <P><STRONG><a name="[d3]"></a>sd_check_ram_start</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, softdevice_handler.o(i.sd_check_ram_start))
@@ -1194,7 +1193,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[3b]"></a>nus_data_handler</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, main.o(i.nus_data_handler))
+<P><STRONG><a name="[3b]"></a>nus_data_handler</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, main.o(i.nus_data_handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = nus_data_handler
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.services_init)
@@ -1243,10 +1242,11 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;on_adv_evt
 </UL>
 
-<P><STRONG><a name="[3d]"></a>systick_timeout_handler</STRONG> (Thumb, 86 bytes, Stack size 8 bytes, main.o(i.systick_timeout_handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 196<LI>Call Chain = systick_timeout_handler &rArr; Flash &rArr; i2s_ws2812b_drive_xfer &rArr; nrf_drv_i2s_init &rArr; configure_pins &rArr; nrf_gpio_cfg_input &rArr; nrf_gpio_cfg
+<P><STRONG><a name="[3d]"></a>systick_timeout_handler</STRONG> (Thumb, 106 bytes, Stack size 8 bytes, main.o(i.systick_timeout_handler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 196<LI>Call Chain = systick_timeout_handler &rArr; FlashFadeInOut &rArr; i2s_ws2812b_drive_xfer &rArr; nrf_drv_i2s_init &rArr; configure_pins &rArr; nrf_gpio_cfg_input &rArr; nrf_gpio_cfg
 </UL>
-<BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Randome
+<BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OffLeds
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FlashFadeInOut
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Flash
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FadeInOut
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclon
@@ -1263,7 +1263,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[100]"></a>timer_start</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, main.o(i.timer_start))
+<P><STRONG><a name="[100]"></a>timer_start</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, main.o(i.timer_start))
 <BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = timer_start &rArr; app_timer_start &rArr; timer_start_op_schedule &rArr; user_op_alloc
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_start
@@ -1545,24 +1545,24 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app_uart_fifo.o(i.app_uart_init)
 </UL>
-<P><STRONG><a name="[5c]"></a>channel_handler_get</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, nrf_drv_gpiote.o(i.channel_handler_get))
+<P><STRONG><a name="[5d]"></a>channel_handler_get</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, nrf_drv_gpiote.o(i.channel_handler_get))
 <BR><BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOTE_IRQHandler
 </UL>
 
-<P><STRONG><a name="[5d]"></a>channel_port_get</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, nrf_drv_gpiote.o(i.channel_port_get))
+<P><STRONG><a name="[5e]"></a>channel_port_get</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, nrf_drv_gpiote.o(i.channel_port_get))
 <BR><BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOTE_IRQHandler
 </UL>
 
-<P><STRONG><a name="[5e]"></a>nrf_gpio_cfg_sense_set</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, nrf_drv_gpiote.o(i.nrf_gpio_cfg_sense_set))
+<P><STRONG><a name="[5f]"></a>nrf_gpio_cfg_sense_set</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, nrf_drv_gpiote.o(i.nrf_gpio_cfg_sense_set))
 <BR><BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOTE_IRQHandler
 </UL>
 
 <P><STRONG><a name="[119]"></a>nrf_gpiote_event_addr_get</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, nrf_drv_gpiote.o(i.nrf_gpiote_event_addr_get))
-<BR><BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpiote_event_is_set
-<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpiote_event_clear
+<BR><BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpiote_event_is_set
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpiote_event_clear
 </UL>
 
-<P><STRONG><a name="[5b]"></a>nrf_gpiote_event_clear</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, nrf_drv_gpiote.o(i.nrf_gpiote_event_clear))
+<P><STRONG><a name="[5c]"></a>nrf_gpiote_event_clear</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, nrf_drv_gpiote.o(i.nrf_gpiote_event_clear))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = nrf_gpiote_event_clear
 </UL>
 <BR>[Calls]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpiote_event_addr_get
@@ -1570,7 +1570,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOTE_IRQHandler
 </UL>
 
-<P><STRONG><a name="[5a]"></a>nrf_gpiote_event_is_set</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, nrf_drv_gpiote.o(i.nrf_gpiote_event_is_set))
+<P><STRONG><a name="[5b]"></a>nrf_gpiote_event_is_set</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, nrf_drv_gpiote.o(i.nrf_gpiote_event_is_set))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = nrf_gpiote_event_is_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpiote_event_addr_get
@@ -1872,16 +1872,16 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_i2s_init
 </UL>
 
-<P><STRONG><a name="[5f]"></a>nrf_i2s_event_check</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, nrf_drv_i2s.o(i.nrf_i2s_event_check))
+<P><STRONG><a name="[60]"></a>nrf_i2s_event_check</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, nrf_drv_i2s.o(i.nrf_i2s_event_check))
 <BR><BR>[Called By]<UL><LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2S_IRQHandler
 </UL>
 
-<P><STRONG><a name="[60]"></a>nrf_i2s_event_clear</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, nrf_drv_i2s.o(i.nrf_i2s_event_clear))
+<P><STRONG><a name="[61]"></a>nrf_i2s_event_clear</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, nrf_drv_i2s.o(i.nrf_i2s_event_clear))
 <BR><BR>[Called By]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_i2s_start
 <LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2S_IRQHandler
 </UL>
 
-<P><STRONG><a name="[62]"></a>nrf_i2s_rx_buffer_set</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, nrf_drv_i2s.o(i.nrf_i2s_rx_buffer_set))
+<P><STRONG><a name="[63]"></a>nrf_i2s_rx_buffer_set</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, nrf_drv_i2s.o(i.nrf_i2s_rx_buffer_set))
 <BR><BR>[Called By]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_i2s_start
 <LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2S_IRQHandler
 </UL>
@@ -1891,12 +1891,12 @@ Local Symbols
 <LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_i2s_start
 </UL>
 
-<P><STRONG><a name="[61]"></a>nrf_i2s_tx_buffer_set</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, nrf_drv_i2s.o(i.nrf_i2s_tx_buffer_set))
+<P><STRONG><a name="[62]"></a>nrf_i2s_tx_buffer_set</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, nrf_drv_i2s.o(i.nrf_i2s_tx_buffer_set))
 <BR><BR>[Called By]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_i2s_start
 <LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2S_IRQHandler
 </UL>
 
-<P><STRONG><a name="[63]"></a>irq_handler</STRONG> (Thumb, 154 bytes, Stack size 16 bytes, nrf_drv_pwm.o(i.irq_handler))
+<P><STRONG><a name="[65]"></a>irq_handler</STRONG> (Thumb, 154 bytes, Stack size 16 bytes, nrf_drv_pwm.o(i.irq_handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = irq_handler
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_pwm_int_enable_check
@@ -1908,15 +1908,15 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[f3]"></a>nrf_pwm_event_check</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, nrf_drv_pwm.o(i.nrf_pwm_event_check))
-<BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;irq_handler
+<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;irq_handler
 </UL>
 
 <P><STRONG><a name="[f4]"></a>nrf_pwm_event_clear</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, nrf_drv_pwm.o(i.nrf_pwm_event_clear))
-<BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;irq_handler
+<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;irq_handler
 </UL>
 
 <P><STRONG><a name="[f2]"></a>nrf_pwm_int_enable_check</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, nrf_drv_pwm.o(i.nrf_pwm_int_enable_check))
-<BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;irq_handler
+<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;irq_handler
 </UL>
 
 <P><STRONG><a name="[75]"></a>irq_handler</STRONG> (Thumb, 92 bytes, Stack size 32 bytes, nrf_drv_timer.o(i.irq_handler))
@@ -1965,13 +1965,13 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[99]"></a>NVIC_ClearPendingIRQ</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, app_timer.o(i.NVIC_ClearPendingIRQ))
-<BR><BR>[Called By]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_start
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_init
+<BR><BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_init
+<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_start
 </UL>
 
 <P><STRONG><a name="[9b]"></a>NVIC_EnableIRQ</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, app_timer.o(i.NVIC_EnableIRQ))
-<BR><BR>[Called By]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_start
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_init
+<BR><BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_init
+<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_start
 </UL>
 
 <P><STRONG><a name="[120]"></a>NVIC_SetPendingIRQ</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, app_timer.o(i.NVIC_SetPendingIRQ))
@@ -1982,20 +1982,20 @@ Local Symbols
 <P><STRONG><a name="[9a]"></a>NVIC_SetPriority</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, app_timer.o(i.NVIC_SetPriority))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = NVIC_SetPriority
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_init
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_init
+<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_init
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_init
 </UL>
 
 <P><STRONG><a name="[db]"></a>compare_reg_update</STRONG> (Thumb, 132 bytes, Stack size 32 bytes, app_timer.o(i.compare_reg_update))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = compare_reg_update &rArr; rtc1_start
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = compare_reg_update &rArr; timer_timeouts_check_sched
 </UL>
-<BR>[Calls]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_start
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_counter_get
-<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_compare0_set
-<LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__asm___11_app_timer_c_cd27f9c3__nrf_delay_us
+<BR>[Calls]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__asm___11_app_timer_c_cd27f9c3__nrf_delay_us
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_timeouts_check_sched
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ticks_diff_get
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_stop
+<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_start
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_counter_get
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_compare0_set
 </UL>
 <BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_list_handler
 </UL>
@@ -2032,9 +2032,9 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[9d]"></a>rtc1_counter_get</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, app_timer.o(i.rtc1_counter_get))
-<BR><BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compare_reg_update
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_init
-<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_timeouts_check
+<BR><BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_init
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compare_reg_update
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_timeouts_check
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_start_op_schedule
 </UL>
 
@@ -2061,14 +2061,14 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__asm___11_app_timer_c_cd27f9c3__nrf_delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compare_reg_update
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_init
+<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_init
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compare_reg_update
 </UL>
 
 <P><STRONG><a name="[dc]"></a>ticks_diff_get</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, app_timer.o(i.ticks_diff_get))
-<BR><BR>[Called By]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;list_insertions_handler
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compare_reg_update
-<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_timeouts_check
+<BR><BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compare_reg_update
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_timeouts_check
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;list_insertions_handler
 </UL>
 
 <P><STRONG><a name="[11c]"></a>timeout_handler_exec</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, app_timer.o(i.timeout_handler_exec))
@@ -2076,17 +2076,17 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_error_handler_bare
 </UL>
-<BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_timeouts_check
+<BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_timeouts_check
 </UL>
 
 <P><STRONG><a name="[67]"></a>timer_list_handler</STRONG> (Thumb, 72 bytes, Stack size 32 bytes, app_timer.o(i.timer_list_handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = timer_list_handler &rArr; list_insertions_handler &rArr; timer_list_insert
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = timer_list_handler &rArr; compare_reg_update &rArr; timer_timeouts_check_sched
 </UL>
-<BR>[Calls]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;list_insertions_handler
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;list_deletions_handler
+<BR>[Calls]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;list_deletions_handler
 <LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;expired_timers_handler
 <LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;elapsed_ticks_acquire
 <LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compare_reg_update
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;list_insertions_handler
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SWI0_EGU0_IRQHandler
 </UL>
@@ -2096,7 +2096,7 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_SetPendingIRQ
 </UL>
-<BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_timeouts_check
+<BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_timeouts_check
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_stop_op_schedule
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_start_op_schedule
 </UL>
@@ -2116,10 +2116,10 @@ Local Symbols
 <P><STRONG><a name="[a0]"></a>timer_start_op_schedule</STRONG> (Thumb, 86 bytes, Stack size 32 bytes, app_timer.o(i.timer_start_op_schedule))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = timer_start_op_schedule &rArr; user_op_alloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_counter_get
-<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_op_enque
+<BR>[Calls]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_op_enque
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_op_alloc
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_list_handler_sched
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_counter_get
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_start
 </UL>
@@ -2134,13 +2134,13 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_stop
 </UL>
 
-<P><STRONG><a name="[64]"></a>timer_timeouts_check</STRONG> (Thumb, 130 bytes, Stack size 24 bytes, app_timer.o(i.timer_timeouts_check))
+<P><STRONG><a name="[66]"></a>timer_timeouts_check</STRONG> (Thumb, 130 bytes, Stack size 24 bytes, app_timer.o(i.timer_timeouts_check))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = timer_timeouts_check &rArr; timeout_handler_exec &rArr; app_error_handler_bare
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_counter_get
-<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_list_handler_sched
+<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_list_handler_sched
 <LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timeout_handler_exec
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ticks_diff_get
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc1_counter_get
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTC1_IRQHandler
 </UL>

@@ -12,15 +12,21 @@
 #include	"ws2812b_drive.h"
 #include 	"stdlib.h"
 
-#define FADE 0
-#define CYCLON 1
-#define FLASH 2
-#define RANDOME 3
+#define OFFLEDS '0'
+#define ONLEDS '1'
+#define FADE '2'
+#define CYCLON '3'
+#define FLASH '4'
+#define FLASHFADE '5'
 
 
+void OffLeds(void);
+void SetAll(uint8_t red, uint8_t green, uint8_t blue);
+void SetPixel(uint8_t pixel, uint8_t red, uint8_t green, uint8_t blue);
 uint8_t	FadeInOut(void);
 uint8_t Cyclon(void);
 uint8_t Flash(void);
-uint8_t Randome(void);
+uint8_t FlashFadeInOut(void);
 
 #endif // LEDSPATTERNS_H
+

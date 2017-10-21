@@ -94,12 +94,13 @@ static ble_uuid_t											 m_adv_uuids[] = {{BLE_UUID_NUS_SERVICE, NUS_SERVICE
 #define DEFAULT_VOLUME 100
 
 APP_TIMER_DEF(systick_timer_id);
-#define SYSTICK_INTERVAL         APP_TIMER_TICKS(10, APP_TIMER_PRESCALER) /**< SYSTICK interval (ticks). This value corresponds to 1 seconds. */
+#define SYSTICK_INTERVAL         APP_TIMER_TICKS(1, APP_TIMER_PRESCALER) /**< SYSTICK interval (ticks). This value corresponds to 1 seconds. */
 
 
-uint8_t ws2812bPattern; 
+uint8_t ws2812bPattern=FADE; 
 uint8_t DelayWS2812b=0;
 uint8_t DelayBuzzer=0;
+uint8_t flag_off_leds=false;
 
 
 
@@ -181,18 +182,24 @@ static void nus_data_handler(ble_nus_t * p_nus, uint8_t * p_data, uint16_t lengt
 //		while(app_uart_put('\n') != NRF_SUCCESS);
 
     switch(p_data[0]) {
-    case '1':  
+    case FADE:  
 			ws2812bPattern=FADE;
     break;
-    case '2': 
+    case CYCLON: 
       ws2812bPattern=CYCLON;
     break;
-    case '3': 
+    case FLASH: 
 			ws2812bPattern=FLASH;
     break;
-    case '4': 
-     ws2812bPattern=RANDOME;   
+    case FLASHFADE: 
+			ws2812bPattern=FLASHFADE;   
     break;
+		case OFFLEDS: 	
+			flag_off_leds=true;   
+		break;
+		case ONLEDS: 	
+			flag_off_leds=false;   
+		break;
 
     }
     //Update Leds
@@ -669,39 +676,43 @@ static void systick_timeout_handler(void * p_context)
     UNUSED_PARAMETER(p_context);
 //    static uint8_t DelayWS2812b=0;
 //    static uint8_t DelayBuzzer=0;
-    
-	
-    if(DelayWS2812b==0) {
+    if(!flag_off_leds)
+	{		
+		if(DelayWS2812b==0) {
 
-        switch(ws2812bPattern) {
+			switch(ws2812bPattern) {
 
-        case FADE:
-		{
-            DelayWS2812b=FadeInOut();
-            break;
-        }
-        case CYCLON:
-        {
-            DelayWS2812b=Cyclon();
-            break;
-        }
-				case FLASH:
-        {
-            DelayWS2812b=Flash();
-            break;
-        }
-				case RANDOME:
-        {
-            DelayWS2812b=Randome();
-            break;
-        }
+			case FADE:
+			{
+				DelayWS2812b=FadeInOut();
+				break;
+			}
+			case CYCLON:
+			{
+				DelayWS2812b=Cyclon();
+				break;
+			}
+					case FLASH:
+			{
+				DelayWS2812b=Flash();
+				break;
+			}
+					case FLASHFADE:
+			{
+				DelayWS2812b=FlashFadeInOut();
+				break;
+			}
 
-		default:
-		  break;			
+			default:
+			  break;			
+			}
 		}
-    }
-    else
-        DelayWS2812b--;
+		else
+			DelayWS2812b--;
+	}
+	else if(flag_off_leds)
+		OffLeds();
+	
 }
 /**@brief Function for the Timer initialization.
  *
