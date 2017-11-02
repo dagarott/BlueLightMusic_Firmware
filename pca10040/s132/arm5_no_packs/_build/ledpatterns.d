@@ -42,3 +42,9 @@
 .\_build\ledpatterns.o: ..\..\..\..\..\bsp\pca10040.h
 .\_build\ledpatterns.o: ..\..\..\..\..\..\components\libraries\button\app_button.h
 .\_build\ledpatterns.o: ..\..\..\project.h
+.\_build\ledpatterns.o: ..\..\..\..\..\..\components\toolchain\CMSIS\Include\arm_math.h
+.\_build\ledpatterns.o: ..\..\..\..\..\..\components\toolchain\CMSIS\Include\core_cm4.h
+.\_build\ledpatterns.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\_build\ledpatterns.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\_build\ledpatterns.o: ..\..\..\..\..\..\components\drivers_nrf\rng\nrf_drv_rng.h
+.\_build\ledpatterns.o: ..\..\..\..\..\..\components\drivers_nrf\hal\nrf_rng.h

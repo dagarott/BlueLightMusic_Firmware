@@ -18,6 +18,19 @@
 #define CYCLON '3'
 #define FLASH '4'
 #define FLASHFADE '5'
+#define WIPE '6'
+#define RING '7'
+ 
+ 
+#define DELAYFADE 1
+#define DELAYCYCLON 80
+#define DELAYFLASH 10
+#define DELAYFLASHFADE 1
+#define DELAYWIPE 5
+#define DELAYBOUNCE 10
+#define DELAYRING 250
+#define DELAYRINGBOUNCE 350
+
 
 
 void OffLeds(void);
@@ -27,6 +40,11 @@ uint8_t	FadeInOut(void);
 uint8_t Cyclon(void);
 uint8_t Flash(void);
 uint8_t FlashFadeInOut(void);
+uint16_t Wipe(void);
+uint16_t Ring(void);
+
+unsigned short random_rand(void);
+void random_init(unsigned short seed);
 
 #endif // LEDSPATTERNS_H
 
