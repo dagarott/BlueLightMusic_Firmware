@@ -105,6 +105,10 @@ uint8_t flag_off_leds=false;
 
 
 
+//the song to be played in this demonstration is "Twinkle Twinkle Little Star" 
+
+, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2};
+
 
 //APP_PWM_INSTANCE(PWM1,1);									 // Create the instance "PWM1" using TIMER1.
 
@@ -800,7 +804,7 @@ int main(void)
 	services_init();
 	advertising_init();
 	conn_params_init();
-	//drv_speaker_init(&speaker_init);
+	drv_speaker_init(&speaker_init);
 	timer_init();
 
 
@@ -822,13 +826,11 @@ int main(void)
 	for (;;)
 	{
 		//power_manage();
-		//for (int j=1000; j<4000; (j=j+500)) {
-
-		//drv_speaker_sample_play(j);
-		//note=starwars[j];
-		//drv_speaker_tone_start(j,350 , 50);
-		//drv_speaker_tone_start(2000, 500 , 100);
-		//nrf_delay_ms(100);
+		for (int j=0; j<x; j++) 
+		{
+			drv_speaker_tone_start(song[j],(400*length[j]), 50);
+			nrf_delay_ms(tempo_song3);
+		}
 	}
 
 }
